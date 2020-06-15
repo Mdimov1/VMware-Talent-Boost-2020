@@ -1,0 +1,29 @@
+<div class="profile-information">
+    <h3>Profile information</h3>
+    <img src="https://img.freepik.com/free-vector/businessman-profile-cartoon_18591-58479.jpg?size=338&ext=jpg" width="300px">
+
+    <div class="username">
+        <h4>Username:</h4>
+        <span> {{ user.username }}</span>
+    </div>
+
+    <div class="name">
+        <h4>Name:</h4>
+        <span>{{ user.name }}</span>
+    </div>
+
+    <div class="age">
+        <h4>Age:</h4>
+        <span> {{ user.age }}</span>
+    </div>
+
+    <div *ngIf="user.gender" class="gender">
+        <h4>Gender:</h4>
+        <span> {{ user.gender }}</span>
+    </div>
+
+    <div *ngIf="user.location" class="location">
+        <h4>Location:</h4>
+        <span> {{ user.location }}</span>
+    </div>
+</div>

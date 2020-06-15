@@ -1,0 +1,14 @@
+<div class="search-form">
+    <div class="input-filter">
+        <input [(ngModel)]="filterTitle" placeholder="Enter Charity itle" clrInput/>
+    </div>
+    <button class="btn btn-primary" type="submit" (click)="onSubmit()">search</button>
+
+    <div class="add-charity">
+        <button *ngIf="authenticated" routerLink="/createCharity" class="btn btn-primary">Add Charity</button>
+    </div>
+</div>
+
+<div class="charities-container">
+    <app-charity-list [charities]="charities" ></app-charity-list>
+</div>

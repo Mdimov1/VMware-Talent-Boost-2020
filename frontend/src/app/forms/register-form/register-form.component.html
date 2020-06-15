@@ -1,0 +1,49 @@
+<div class="regContainer">
+<form clrForm class="clr-form clr-form-horizontal" [formGroup]="userRegisterForm">
+
+    <clr-control-container>
+        <label for="username" class="clr-control-label">Username:</label>
+      <input clrControl name="username" placeholder="username" formControlName="username" />
+      <clr-control-error *clrIfError="'required'">Username is a required field</clr-control-error>
+    </clr-control-container>
+
+    <clr-control-container>
+        <label for="password" class="clr-control-label">Password:</label>
+        <input clrControl type="password" name="password" placeholder="password" formControlName="password" />
+        <clr-control-error *clrIfError="'required'">Password is a required field</clr-control-error>
+        <clr-control-error *clrIfError="'minlength'; error as err">Must be at least {{ err.requiredLength }} characters</clr-control-error>      
+    </clr-control-container>
+
+      <clr-control-container>
+          <label for="name" class="clr-control-label">Name:</label>
+        <input clrControl name="name" placeholder="name" formControlName="name" />
+        <clr-control-error *clrIfError="'required'">Name is a required field</clr-control-error> 
+    </clr-control-container>
+
+      <clr-control-container>
+          <label for="age" class="clr-control-label">Age:</label>
+        <input clrControl type="number" min="1" name="age" placeholder="age" formControlName="age" />
+        <clr-control-error *clrIfError="'required'">Age is a required field</clr-control-error> 
+
+      </clr-control-container>
+
+      <clr-control-container>
+          <label>Gender:</label>
+        <clr-radio-wrapper>
+        <input type="radio" clrRadio value="male"  formControlName="gender" />
+            <label>Male</label>
+            </clr-radio-wrapper>
+        <clr-radio-wrapper>
+            <input type="radio" clrRadio value="female"  formControlName="gender" />
+            <label>Female</label>
+        </clr-radio-wrapper>
+    </clr-control-container>
+
+      <clr-control-container>
+          <label for="location" class="clr-control-label">Location:</label>
+        <input clrControl name="location" placeholder="location" formControlName="location" />
+      </clr-control-container>
+
+      <button class="btn btn-primary" type="submit" (click)="onSubmit()">Register</button>
+  </form>
+</div>

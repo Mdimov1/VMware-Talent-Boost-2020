@@ -1,0 +1,26 @@
+
+<body>
+<div class="logContainer">
+    <div *ngIf="showError" class="error-active">
+        Invalid user name or password
+    </div>
+    <form clrForm class="clr-form clr-form-horizontal" [formGroup]="userLoginForm">
+
+    <clr-control-container>
+        <label for="username" class="clr-control-label">Username:</label>
+      <input clrControl name="username" placeholder="username" formControlName="username" />
+      <clr-control-error *clrIfError="'required'">Username a required field</clr-control-error>
+    </clr-control-container>
+
+    <clr-control-container>
+        <label for="password" class="clr-control-label">Password:</label>
+        <input clrControl type="password" name="password" placeholder="password" formControlName="password" />
+        <clr-control-error *clrIfError="'required'">Password a required field</clr-control-error>
+        <clr-control-error *clrIfError="'minlength'; error as err">Must be at least {{ err.requiredLength }} characters</clr-control-error>      
+    </clr-control-container>
+
+    <button class="btn btn-primary" type="submit" (click)="onSubmit()">Login</button>
+    </form>
+</div>
+</body>
+

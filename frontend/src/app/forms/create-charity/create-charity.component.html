@@ -1,0 +1,35 @@
+<form clrForm class="clr-form clr-form-horizontal" [formGroup]="createCharityForm">
+
+    <clr-input-container>
+        <label for="name">Name:</label>
+        <input clrInput type="text" name="name" placeholder="name" formControlName="name"/>
+        <clr-control-error *clrIfError="'required'">Name is a required field</clr-control-error>
+    </clr-input-container>
+
+    <clr-textarea-container>
+        <label for="description"><b>Description:</b></label>
+        <textarea clrTextarea name="description" placeholder="description" formControlName="description"></textarea>
+        <clr-control-error *clrIfError="'required'">Description is a required field</clr-control-error>     
+    </clr-textarea-container>
+
+    <div class="file-container">
+        <label for="image">Upload charity image:</label><br>
+        <!--this image show uploaded file-->
+        <img  [src]="imageSrc" *ngIf="imageSrc" style="height: 300px; width:500px">
+        <input type="file" name="image" (change)="selectFile($event)">
+    </div>
+
+    <clr-input-container>
+        <label for="donation_required">Donation required:</label>
+        <input clrInput type="number" name="donation_required" placeholder="Donation required" formControlName="donation_required"/>
+        <clr-control-error *clrIfError="'required'">Donation required is a required field</clr-control-error>
+    </clr-input-container>
+
+    <clr-input-container>
+        <label for="participants_required">Participants required:</label>
+        <input clrInput type="number" name="participants_required" placeholder="Participants required" formControlName="participants_required"/>
+    </clr-input-container>
+
+    <button class="btn btn-primary" type="submit" (click)="onSubmit()">Create</button>
+
+</form>

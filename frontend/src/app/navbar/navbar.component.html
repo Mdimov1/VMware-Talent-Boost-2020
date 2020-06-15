@@ -1,0 +1,36 @@
+<header class="header-4">
+    <div class="branding">
+        <a routerLink="home" class="nav-link">
+            <span class="title">Welcome to Networking of Giving</span>
+        </a>
+    </div>
+    
+
+    <div class="header-actions">
+        <!--No authenticateed user: -->
+        <a *ngIf="!authenticated()" routerLink="register" routerLinkActive="active" class="nav-link nav-text">Register</a>
+        <a *ngIf="!authenticated()" routerLink="login" routerLinkActive="active" class="nav-link nav-text">Login</a>
+
+       <!--Authenticated user: -->
+  
+       <a *ngIf="authenticated()" routerLink="profile" class="nav-link nav-icon-text">
+            <clr-icon shape="user"></clr-icon>
+            <span>Hello, {{ loginUser }}</span>
+        </a>
+        <a *ngIf="authenticated()" routerLink="profile" routerLinkActive="active" class="nav-link nav-text">Profile</a>
+        <a *ngIf="authenticated()" (click)="logoutModal = true" class="nav-link nav-text">Logout</a>
+        <!--<a [hidden]="!authenticated()" class="nav-link nav-text">Logout</a>-->
+     </div>
+</header>
+
+<clr-modal [(clrModalOpen)]="logoutModal" [clrModalClosable]="true">
+    <div class="modal-body">
+        <h2>Are you sure you want to logout?</h2>
+    </div>
+    <div class="modal-footer">
+
+      <button type="button"  class="btn btn-primary" (click)="logout(); logoutModal = false">Yes</button>
+      <button type="button" class="btn btn-outline" (click)="logoutModal = false">Cancel</button>
+
+    </div>
+  </clr-modal>

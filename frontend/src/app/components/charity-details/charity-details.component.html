@@ -1,0 +1,84 @@
+<div *ngIf="charity" id="cardDiv" class="clr-col-lg-6 clr-col-12">
+    <div class="card">
+        <div class="card-header">
+            {{ charity.name }}
+        </div>
+        <div class="card-block">
+            <div class="card-media-block wrap">
+                <img src="{{ charity.thumbnail_name }}" class="card-image">
+                <div class="card-media-description">
+                    <!--Author-->
+                    <span class="card-media-text">
+                        Author: {{ author_name }}
+                    </span>
+                    <!--Donations-->
+                    <span *ngIf="charity.donation_required > 0" class="card-media-text">
+                        Donated: {{ donated_amount }} / {{ charity.donation_required }}
+                    </span>
+                    <!--Participants-->
+                    <span *ngIf="charity.participants_required > 0" class="card-media-text">
+                        Participants: {{ count_participants }} / {{ charity.participants_required }}
+                    </span>
+                </div>
+                <!--Charity description-->
+            <div class="card-text">
+                <span>Description:</span><br>
+                <span>{{ charity.description }}</span>
+            </div>
+            </div>
+        </div>
+        <div class="card-footer">
+            <!--Donate-->
+            <button *ngIf="authenticated()" (click)="donateModal = true" class="btn btn-sm btn-link">Donate</button>
+            <!--Volunteer-->
+            <button *ngIf="authenticated()" (click)="volunteerModal = true"class="btn btn-sm btn-link">Volunteer</button>
+            <!--Delete-->
+            <button *ngIf="authenticated() && canDelete()" (click)="deleteModal = true"class="btn btn-primary">Delete</button>
+        </div>
+    </div>
+</div>
+
+ <!-------------DONATE MODAL------------->
+<clr-modal [(clrModalOpen)]="donateModal" [clrModalClosable]="true">
+    <div class="modal-body">
+
+        <h3>Donate amount:</h3>
+        <input class="clr-input" [(ngModel)]="donateAmount" minlength="1" type="number" [clrFocusOnViewInit]="true"/>
+    
+    </div>
+    <div class="modal-footer">
+
+      <button type="button"  class="btn btn-primary" (click)="donate(); donateModal = false">Donate</button>
+      <button type="button" class="btn btn-outline" (click)="donateModal = false">Cancel</button>
+
+    </div>
+  </clr-modal>
+
+ <!-------------VOLUNTEER MODAL------------->
+  <clr-modal [(clrModalOpen)]="volunteerModal" [clrModalClosable]="true">
+    <div class="modal-body">
+
+        <h2>Do you want to become a volunteer in this charity?</h2>
+    </div>
+    <div class="modal-footer">
+
+      <button type="button" class="btn btn-primary" (click)="addVolunteer(); volunteerModal = false">Yes</button>
+      <button type="button"  class="btn btn-outline" (click)="volunteerModal = false">No</button>
+    
+    </div>
+  </clr-modal>
+
+
+  <!-------------DELETE MODAL------------->
+  <clr-modal [(clrModalOpen)]="deleteModal" [clrModalClosable]="true">
+    <div class="modal-body">
+
+        <h2>Are you sure to want to delete this charity?</h2>
+    </div>
+    <div class="modal-footer">
+
+      <button type="button" class="btn btn-primary" (click)="deleteCharity(); deleteModal = false">Yes</button>
+      <button type="button"  class="btn btn-outline" (click)="deleteModal = false">No</button>
+    
+    </div>
+  </clr-modal>
