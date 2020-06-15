@@ -1,0 +1,19 @@
+image: maven:3.6.3-jdk-11
+
+stages:
+    - build
+    - test
+
+build:
+    stage: build
+    script:
+      - echo "Starting build"
+      - cd backend
+      - mvn clean install
+
+test:
+    stage: test
+    script:
+      - echo "Starting test"
+      - cd backend
+      - mvn test
