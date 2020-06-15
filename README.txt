@@ -12,7 +12,7 @@ connect and participate in different charities around your local area.
 - Comfirm for logout.
 - Create charity page. Logged in users can create a charity.
 - Donate to charity. Just for logged in users.
-- Donate form.
+- Donation form.
 - Participant in charity. Logged user can participate in one charity just one time.
 - Particpate form.
 - Delete charity. Logged in users can delete just charities, which are created by them.
